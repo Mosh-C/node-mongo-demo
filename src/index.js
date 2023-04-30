@@ -108,4 +108,12 @@ const updateCourse2 = async (id) => {
 
   console.log(result);
 }
-updateCourse2('644d884c69e1ca8919ad1571')
+// updateCourse2('644d884c69e1ca8919ad1571');
+
+const removeCourse = async (id) => {
+  const result = await Course.findByIdAndRemove(id);
+
+  console.log(result);
+}
+removeCourse('644d884c69e1ca8919ad1571');
+
