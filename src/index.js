@@ -96,4 +96,16 @@ const updateCourse = async (id) => {
   }
 }
 
-updateCourse('644d884c69e1ca8919ad1571')
+// updateCourse('644d884c69e1ca8919ad1571')
+
+const updateCourse2 = async (id) => {
+  const result = await Course.findByIdAndUpdate(id, {
+    $set: {
+      author: 'Karam',
+      isPublished: false
+    }
+  }, { new: true });
+
+  console.log(result);
+}
+updateCourse2('644d884c69e1ca8919ad1571')
