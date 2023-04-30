@@ -55,19 +55,21 @@ const getCourses = async () => {
     // .find({ price: { $in: [10, 15, 20] } })
     // .find()
     // .or([{ author: 'Mosh' }, { isPublished: true }])
-    // .find({ author: 'Mosh', isPublished: true })
 
     // Starts with Mosh
-    .find({ author: /^Mosh/ })
+    // .find({ author: /^Mosh/ })
 
     // Ends with Hamedani
-    .find({ author: /Mosh$/i })
+    // .find({ author: /Mosh$/i })
 
     // Contains Mosh
-    .find({ author: /.*Mosh.*/ })
+    // .find({ author: /.*Mosh.*/ })
+
+    .find({ author: 'Mosh', isPublished: true })
     .limit(10)
     .sort({ name: 1 })
-    .select({ name: 1, tags: 1 })
+    // .select({ name: 1, tags: 1 })
+    .count()
   console.log(courses);
 };
 
