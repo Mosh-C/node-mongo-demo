@@ -18,7 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/playground')
 const courseSchema = new mongoose.Schema({
   name: String,
   author: String,
-  tags: [ String ],
+  tags: [String],
   date: { type: Date, default: Date.now },
   isPublished: Boolean
 });
@@ -32,21 +32,29 @@ const createCourse = async () => {
     tags: ['angular', 'frontend'],
     isPublished: true
   });
-  
+
   const result = await course.save();
   console.log(result);
 };
 
 const getCourses = async () => {
-  const result = await Course.find({ 
-    author: 'Mosh',
-    isPublished: true,
+  // eq   (equal)
+  // ne   (not equal)
+  // gt   (grather than)
+  // gte  (grather than or equal)
+  // lt   (less than)
+  // lte  (less than or equal)
+  // in
+  // nin  (not in)
 
-  })
-  .limit(10)
-  .sort({ name: 1 })
-  .select({ name: 1, tags: 1 })
-  console.log(result);
+  const courses = await Course
+  // .find({ price: { $gte: 10, $lte: 20 } })
+  // .find({ price: { $in: [10, 15, 20] } })
+    .find({ author: 'Mosh', isPublished: true, })
+    .limit(10)
+    .sort({ name: 1 })
+    .select({ name: 1, tags: 1 })
+  console.log(courses);
 };
 
 getCourses();
