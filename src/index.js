@@ -36,6 +36,7 @@ const createCourse = async () => {
   const result = await course.save();
   console.log(result);
 };
+// createCourse();
 
 const getCourses = async () => {
   // eq   (equal)
@@ -76,6 +77,23 @@ const getCourses = async () => {
   console.log(courses);
 };
 
-getCourses();
+// getCourses();
 
-// createCourse();
+const updateCourse = async (id) => {
+  try {
+    const course = await Course.findById(id);
+    if (!course) throw new Error('Course is not found!');
+
+    course.isPublished = true;
+    course.author = 'Karam Zomlot'
+
+    const result = await course.save();
+
+    console.log(result);
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+updateCourse('644d884c69e1ca8919ad1571')
